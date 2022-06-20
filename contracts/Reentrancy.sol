@@ -15,7 +15,7 @@ contract EtherStore {
     function withdraw() external {
         uint256 balance = balances[msg.sender];
         require(balance > 0);
-        (bool success, ) = msg.sender.call{value: balance}("");
+        (bool success, ) = msg.sender.call{value: balance}(""); // Does the reentrancy happen over here?
         require(success, "Failed to send Ether");
         balances[msg.sender] = 0;
     }
@@ -27,3 +27,5 @@ contract EtherStore {
 }
 
 // How could you make a contract that exploits this?
+
+// run `yarn slither

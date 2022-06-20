@@ -10,3 +10,7 @@ contract VaultFuzzTest is Vault {
         return s_locked == true;
     }
 }
+
+// Fuzz test using echidna to find password https://github.com/crytic/echidna
+// command
+// echidna-test /src/contracts/test/fuzzing/VaultFuzzTest.sol --contract VaultFuzzTest --config /src/contracts/test/fuzzing/config.yaml

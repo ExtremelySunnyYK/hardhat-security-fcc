@@ -15,7 +15,7 @@ contract BadRNG {
 
     function pickWinner() external {
         uint256 randomWinnerIndex = uint256(
-            keccak256(abi.encodePacked(block.difficulty, msg.sender))
+            keccak256(abi.encodePacked(block.difficulty, msg.sender)) // not random as the miners can influence the block difficulty and people can cacnel transcation
         );
         address winner = s_players[randomWinnerIndex % s_players.length];
         (bool success, ) = winner.call{value: address(this).balance}("");

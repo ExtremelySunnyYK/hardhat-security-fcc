@@ -51,7 +51,7 @@ contract LiquidityPoolAsOracle {
     ) public view returns (uint256) {
         return ((amount * IERC20(to).balanceOf(address(this))) /
             IERC20(from).balanceOf(address(this)));
-    }
+    } // we want to get the price of the swap from different exchange
 }
 
 // How could you make a contract that exploits this Dex?
